@@ -1,0 +1,6 @@
+{
+  "name": "Sou Alérgico",
+  "description": "Aplicativo de segurança e controle de alergias e medicamentos em uso.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

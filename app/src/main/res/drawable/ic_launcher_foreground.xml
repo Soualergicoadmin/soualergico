@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Shield Container (Centered 66dp safe zone) -->
+    <path
+        android:fillColor="#E3FFFE"
+        android:pathData="M54,26 C68,26 76,31 76,31 C76,31 76,55 54,74 C32,55 32,31 32,31 C32,31 40,26 54,26 Z" />
+    <!-- Medical Cross inside the Shield -->
+    <path
+        android:fillColor="#006565"
+        android:pathData="M51,40 h6 v8 h8 v6 h-8 v8 h-6 v-8 h-8 v-6 h8 z" />
+</vector>

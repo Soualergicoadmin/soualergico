@@ -1,6 +1,6 @@
 {
   "name": "Sou Alérgico",
-  "description": "Aplicativo de segurança e controle de alergias e medicamentos em uso.",
+  "description": "A secure emergency medical profile and allergy alert system. Store severe allergies, emergency contacts, and log allergic reactions for instant visibility during critical moments.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

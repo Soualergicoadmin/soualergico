@@ -7,7 +7,3 @@ plugins {
   alias(libs.plugins.secrets) apply false
   alias(libs.plugins.google.services) apply false
 }
-dependencies {
-    // Leitor oficial de QR Code do Google Play Services
-    implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
-}

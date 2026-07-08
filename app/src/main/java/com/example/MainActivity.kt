@@ -40,6 +40,57 @@ import com.example.ui.theme.Primary
 import com.example.ui.theme.PrimaryContainer
 import com.example.ui.theme.Secondary
 import com.example.viewmodel.MainViewModel
+import androidx.appcompat.app.AppCompatActivity
+import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode
+
+class ScanActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_scan)
+
+        // Exemplo: Disparar ao clicar no botão de escanear
+        iniciarLeituraQRCode()
+    }
+
+    private fun iniciarLeituraQRCode() {
+        // Configura o leitor para aceitar apenas QR Code
+        val options = GmsBarcodeScannerOptions.Builder()
+            .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+            .enableAutoZoom() // Zoom automático se o QR Code estiver longe
+            .build()
+
+        val scanner = GmsBarcodeScanning.getClient(this, options)
+
+        scanner.startScan()
+            .addOnSuccessListener { barcode ->
+                // QR Code lido com sucesso!
+                val conteudoLido = barcode.rawValue
+                
+                if (conteudoLido != null) {
+                    // Exemplo: Se for uma URL da ficha, você pode abrir no navegador ou buscar na API
+                    Toast.makeText(this, "Lido: $conteudoLido", Toast.LENGTH_LONG).show()
+                    
+                    // Aqui você processa a URL ou o ID lido...
+                    processarConteudoLido(conteudoLido)
+                }
+            }
+            .addOnCanceledListener {
+                // Usuário fechou a câmera sem escanear
+                Toast.makeText(this, "Leitura cancelada", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                // Erro ao abrir a câmera/scanner
+                Toast.makeText(this, "Erro ao ler QR Code: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun processarConteudoLido(urlOuTexto: String) {
+        // Lógica para direcionar o usuário ou abrir os dados
+    }
+}
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()

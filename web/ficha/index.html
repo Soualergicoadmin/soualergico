@@ -15,21 +15,26 @@
 <body>
     <div class="card" id="app">
         <h2>Ficha de Emergência</h2>
-        <input type="password" id="pinInput" placeholder="Digite o PIN de 4 dígitos" maxlength="4">
-        <button onclick="decryptData()">Descriptografar</button>
+        <input type="text" id="cpfInput" placeholder="Digite o CPF do Socorrista" maxlength="11">
+        <button onclick="decryptData()">Acessar Ficha</button>
         <p id="result"></p>
     </div>
 
     <script>
         function decryptData() {
             const hash = window.location.hash.substring(1);
-            const pin = document.getElementById('pinInput').value;
+            const cpf = document.getElementById('cpfInput').value;
             
-            if (pin.length !== 4) {
-                alert("Por favor, digite o PIN de 4 dígitos.");
+            if (cpf.length < 11) {
+                alert("Por favor, digite um CPF válido.");
                 return;
             }
 
+            console.log("Acesso registrado para CPF: " + cpf);
+
+            // Use the hardcoded key "0000"
+            const pin = "0000";
+            
             // Pad the key to 16 bytes with '0'
             const key = pin.padEnd(16, '0');
             const keyUtf8 = CryptoJS.enc.Utf8.parse(key);
@@ -42,7 +47,7 @@
                 });
                 
                 const result = decrypted.toString(CryptoJS.enc.Utf8);
-                document.getElementById('result').innerText = result || "Erro: PIN incorreto ou dados inválidos.";
+                document.getElementById('result').innerText = result || "Erro: Dados inválidos.";
             } catch (e) {
                 document.getElementById('result').innerText = "Erro ao descriptografar.";
             }

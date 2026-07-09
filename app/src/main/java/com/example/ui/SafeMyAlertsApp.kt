@@ -311,6 +311,7 @@ fun SafeMyAlertsApp(viewModel: AllergyViewModel) {
     val context = LocalContext.current
     val dbProfile by viewModel.userProfile.collectAsStateWithLifecycle()
     val dbAllergies by viewModel.allergies.collectAsStateWithLifecycle()
+    val dbContacts by viewModel.contacts.collectAsStateWithLifecycle()
 
     // Authentication States
     var isLoggedIn by remember { mutableStateOf(false) }
@@ -1851,7 +1852,9 @@ fun SafeMyAlertsApp(viewModel: AllergyViewModel) {
                                 .background(EmergencyRed.copy(alpha = pulseAlpha2))
                         )
                         // QR Code trigger
-                        IconButton(onClick = { isQRCodeOpen = true }) {
+                        IconButton(onClick = { 
+                            isQRCodeOpen = true 
+                        }) {
                             Icon(Icons.Default.QrCode, contentDescription = "QR Code", tint = MedicalBlue)
                         }
                         // The core floating panic button
@@ -1907,7 +1910,15 @@ fun SafeMyAlertsApp(viewModel: AllergyViewModel) {
                     Text("QR Code de Emergência", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                     Spacer(modifier = Modifier.height(16.dp))
                     
-                    val qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://soualergico.vercel.app/emergency/user-id-123"
+                    val healthDataString = """
+                        NOME: ${dbProfile?.name ?: ""}
+                        SANGUE: ${dbProfile?.bloodType ?: ""}
+                        ALERGIAS: ${dbAllergies.joinToString { it.allergen }}
+                        CONTATOS: ${dbContacts.joinToString { it.name }}
+                    """.trimIndent()
+                    
+                    val encryptedData = encryptEmergencyData(healthDataString, "0000")
+                    val qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://soualergico.vercel.app/ficha/#$encryptedData"
                     
                     Image(
                         painter = coil.compose.rememberAsyncImagePainter(qrUrl),

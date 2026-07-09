@@ -2,38 +2,34 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Clinical Clarity Theme Palette
-val Primary = Color(0xFF006565)
-val OnPrimary = Color(0xFFFFFFFF)
-val PrimaryContainer = Color(0xFF008080)
-val OnPrimaryContainer = Color(0xFFE3FFFE)
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
 
-val Secondary = Color(0xFF5D5F5F)
-val OnSecondary = Color(0xFFFFFFFF)
-val SecondaryContainer = Color(0xFFDFE0E0)
-val OnSecondaryContainer = Color(0xFF616363)
+val Purple40 = Color(0xFF6650a4)
+val PurpleGrey40 = Color(0xFF625b71)
+val Pink40 = Color(0xFF7D5260)
 
-val Tertiary = Color(0xFF595A5B)
-val OnTertiary = Color(0xFFFFFFFF)
+// Medical Safety Theme Colors
+val MedicalRed = Color(0xFFE11D48) // Vibrant Emergency Red
+val MedicalOrange = Color(0xFFF97316) // Warning Orange (EpiPen)
+val MedicalAmber = Color(0xFFF59E0B) // Alert Yellow/Amber
+val MedicalGreen = Color(0xFF10B981) // Safe / Saved Green
+val DarkSlate = Color(0xFF0F172A) // Dark backgrounds
+val LightCard = Color(0xFFF8FAFC) // Light slate card background
+val SlateText = Color(0xFF334155) // Text gray
 
-val Background = Color(0xFFF6FAF9)
-val OnBackground = Color(0xFF181C1C)
+// Professional Polish Brand Palette (Tailwind Extract)
+val ProfBlue = Color(0xFF0061A4)
+val ProfBlueContainer = Color(0xFFD1E4FF)
+val ProfOnBlueContainer = Color(0xFF001D36)
+val ProfBackground = Color(0xFFFDFBFF)
+val ProfTextDark = Color(0xFF191C1E)
+val ProfNeutralVariant = Color(0xFF44474E)
+val ProfGreyContainer = Color(0xFFEFF1F8)
+val ProfGreyText = Color(0xFF535F70)
+val ProfBorder = Color(0xFFDDE2EA)
 
-val Surface = Color(0xFFF6FAF9)
-val OnSurface = Color(0xFF181C1C)
-val SurfaceVariant = Color(0xFFDFE3E2)
-val OnSurfaceVariant = Color(0xFF3E4949)
-
-val Outline = Color(0xFF6E7979)
-val OutlineVariant = Color(0xFFBDC9C8)
-
-val Error = Color(0xFFBA1A1A)
-val OnError = Color(0xFFFFFFFF)
-val ErrorContainer = Color(0xFFFFDAD6)
-val OnErrorContainer = Color(0xFF93000A)
-
-val SurfaceContainerLow = Color(0xFFF0F4F3)
-val SurfaceContainerLowest = Color(0xFFFFFFFF)
-val SurfaceContainerHigh = Color(0xFFE5E9E8)
-val SurfaceContainerHighest = Color(0xFFDFE3E2)
-val SurfaceBright = Color(0xFFF6FAF9)
+val ProfAlertRed = Color(0xFFBA1A1A)
+val ProfAlertRedContainer = Color(0xFFFFDAD6)
+val ProfOnAlertRedContainer = Color(0xFF410002)

@@ -2,32 +2,38 @@ package com.example.data
 
 import kotlinx.coroutines.flow.Flow
 
-class AppRepository(
-    private val allergyDao: AllergyDao,
-    private val medicationDao: MedicationDao,
-    private val userProfileDao: UserProfileDao
-) {
-    val allAllergies: Flow<List<Allergy>> = allergyDao.getAllAllergies()
-    val allMedications: Flow<List<Medication>> = medicationDao.getAllMedications()
-    val userProfile: Flow<UserProfile?> = userProfileDao.getProfile()
+class AppRepository(private val appDao: AppDao) {
+
+    val userProfile: Flow<UserProfile?> = appDao.getUserProfile()
+    val allAllergies: Flow<List<Allergy>> = appDao.getAllAllergies()
+    val allContacts: Flow<List<EmergencyContact>> = appDao.getAllContacts()
+    val allIncidents: Flow<List<IncidentLog>> = appDao.getAllIncidents()
+
+    suspend fun saveUserProfile(profile: UserProfile) {
+        appDao.insertUserProfile(profile)
+    }
 
     suspend fun insertAllergy(allergy: Allergy) {
-        allergyDao.insertAllergy(allergy)
+        appDao.insertAllergy(allergy)
     }
 
-    suspend fun deleteAllergy(id: Int) {
-        allergyDao.deleteById(id)
+    suspend fun deleteAllergy(allergy: Allergy) {
+        appDao.deleteAllergy(allergy)
     }
 
-    suspend fun insertMedication(medication: Medication) {
-        medicationDao.insertMedication(medication)
+    suspend fun insertContact(contact: EmergencyContact) {
+        appDao.insertContact(contact)
     }
 
-    suspend fun deleteMedication(id: Int) {
-        medicationDao.deleteById(id)
+    suspend fun deleteContact(contact: EmergencyContact) {
+        appDao.deleteContact(contact)
     }
 
-    suspend fun updateProfile(profile: UserProfile) {
-        userProfileDao.insertProfile(profile)
+    suspend fun insertIncident(incident: IncidentLog) {
+        appDao.insertIncident(incident)
+    }
+
+    suspend fun deleteIncident(incident: IncidentLog) {
+        appDao.deleteIncident(incident)
     }
 }
